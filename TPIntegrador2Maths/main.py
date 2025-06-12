@@ -1,3 +1,5 @@
+
+
 #ingresar dni n veces
 #generar conjuntos de digitos unicos
 #calcular union, interseccion y diferencia
@@ -107,7 +109,7 @@ def obtener_input_años_nacimiento(num_integrantes):
                     print ("Este año de nacimiento ya fue ingresado")
                     continue
                 años.append(año_ingresado)
-                año_valido_unico = True # sale del while para este integante
+                año_valido_unico = True # sale del while para este integrante
             except ValueError:
                 print("Entrada Invalida, por favor ingresa un numero.")
     return años
@@ -115,6 +117,8 @@ def obtener_input_años_nacimiento(num_integrantes):
 def es_biciesto(año):
     #devuelve true si es bisiesto, false si no.
     return ( año % 4 == 0 and año % 100 != 0) or (año % 400 == 0)
+
+
 
 def procesar_años_nacimiento(años_lista):
     # contamos cuantos nacieron en años pares e impares
@@ -149,6 +153,24 @@ def procesar_años_nacimiento(años_lista):
         print("ninguno nació en año biciesto")
 #### fin funciones agregadas
 
+#agregando funcion para calcular las edades actuales
+# Esta función calcula las edades actuales basándose en los años de nacimiento proporcionados.
+def calcular_edades_actuales(años_nacimiento):
+    edades = []
+    for año in años_nacimiento:
+        edad = 2025 - año  # Asumiendo que el año actual es 2025 (se puede hacer importando el módulo datetime)
+        edades.append(edad)
+    # Convertimos la lista de edades a un conjunto para obtener edades actuales
+    return set(edades)
+
+# Esta función calcula el producto cartesiano entre las edades y los años de nacimiento.
+def calcular_producto_cartesiano(edades, años_nacimiento):
+    producto_cartesiano = set()
+    for edad in edades:
+        for año in años_nacimiento:
+            producto_cartesiano.add((edad, año))
+    return producto_cartesiano
+
 def main():
     lista_dni = solicitar_dni()
     
@@ -178,6 +200,18 @@ def main():
     
     # Llamamos a la función para procesar los años de nacimiento
     procesar_años_nacimiento(años_nacimiento_ingresados)
+    
+    #calculamos las edades actuales y el producto cartesiano
+    print("\n--- Cálculo de Edades y Producto Cartesiano ---")
+    # Llamamos a la función para calcular las edades actuales y el producto cartesiano
+    # Asumimos que el año actual es 2025 para el cálculo de edades
+    edades_actuales = calcular_edades_actuales(años_nacimiento_ingresados)
+    producto_cartesiano = calcular_producto_cartesiano(edades_actuales, años_nacimiento_ingresados)
+    print(f"Edades actuales: {edades_actuales}")
+    print(f"Producto cartesiano entre edades y años de nacimiento: {producto_cartesiano}")
+    
+    
+    
 
 main()
 # Este código solicita una cantidad de DNI, procesa los dígitos únicos y calcula la unión, intersección, diferencia simétrica y diferencias entre ellos.
