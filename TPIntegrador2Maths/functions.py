@@ -96,7 +96,7 @@ def obtener_input_años_nacimiento(num_integrantes):
             try: #capturamos errores acá
                 año_ingresado = int(input(f"ingrese año de nacimiento del integrante {i}:"))
                 if not (1900 < año_ingresado < 2025):
-                    print ("año invalido, o sos inmortal o del futuro.  Por favor, ingresa un año razonable (entre 1901 y 2024). ")
+                    print ("Por favor, ingresa un año razonable (entre 1901 y 2024). ")
                     continue # vuelve al inicio del while para pedir de nuevo
                 if num_integrantes > 1 and año_ingresado in años:
                     print ("Este año de nacimiento ya fue ingresado")
